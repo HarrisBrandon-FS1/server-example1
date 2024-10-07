@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const authors = [{id: 23, name:"Hemmingway"}];
+const authors = [
+    {id: 23, name:"Fitzgerald"},
+    {id:24, name:"Patterson"}
+];
 
 //localhost:3001/api/v1/authors /
 router.get("/", (req, res) => {
@@ -11,7 +14,7 @@ router.get("/", (req, res) => {
 
 //Post
 router.post("/", (req, res) => {
-    res.status(200).json({success: true, message: `${req.method} Request made to Authors`});
+    res.status(201).json({success: true, message: `${req.method} Request made to Authors`});
 console.log(">>>", req.body);
 console.log(authors);
 authors.push(req.body);
@@ -52,7 +55,6 @@ router.patch("/:id", (req, res) => {
 //Delete
 router.delete("/:id", (req, res) => {
     console.log("id >>> ", req.params.id)
-    const { id } = req.params;
 
     const authorId = parseInt(req.params.id);
 
@@ -62,7 +64,7 @@ router.delete("/:id", (req, res) => {
         return res.status(404).json({ message: 'Author not found'});
     }
 
-    authors.splice(authorIndex, req.params.id);
+    authors.splice(authorIndex, authorId);
 
     res.json({message: 'Author deleted successfully'});
 
