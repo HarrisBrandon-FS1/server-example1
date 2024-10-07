@@ -9,10 +9,6 @@ router.get("/", (req, res) => {
     res.status(200).json({success: true, message: `${req.method} Request made to Authors`});
 });
 
-
-
-
-
 //Post
 router.post("/", (req, res) => {
     res.status(200).json({success: true, message: `${req.method} Request made to Authors`});
@@ -20,12 +16,6 @@ console.log(">>>", req.body);
 console.log(authors);
 authors.push(req.body);
 });
-
-
-
-
-
-
 
 //localhost:3001/api/v1/authors/42343264
 router.get("/:id", (req, res) => {
@@ -38,10 +28,6 @@ router.get("/:id", (req, res) => {
     res.status(404).json({ message: 'Author not found'});
    }
 });
-
-
-
-
 
 //Patch
 router.patch("/:id", (req, res) => {
@@ -63,9 +49,6 @@ router.patch("/:id", (req, res) => {
     res.status(200).json({success: true, id:id, message: `${req.method} Request made to Authors`});
 });
 
-
-
-
 //Delete
 router.delete("/:id", (req, res) => {
     console.log("id >>> ", req.params.id)
@@ -85,9 +68,5 @@ router.delete("/:id", (req, res) => {
 
     res.status(200).json({success: true, id:id, message: `${req.method} Request made to Authors`});
 });
-
-
-
-
 
 module.exports = router;
